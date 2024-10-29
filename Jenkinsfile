@@ -29,12 +29,7 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            agent {
-                docker {
-                    image 'google/cloud-sdk'
-                }
-            }
+        stage('Deploy'){
             steps {
                 withCredentials([file(credentialsId: 'gcp-service-account', variable: 'GC_KEY')]) {
                     sh """
